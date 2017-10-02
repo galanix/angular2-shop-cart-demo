@@ -1,0 +1,28 @@
+<div class="add-item">
+	<input type="text" placeholder="Item name" [(ngModel)]="name">
+	<input type="text" placeholder="Quantity" [(ngModel)]="quantity">
+	<button class="btn" (click)="add();" >Add Item to "To Buy" List</button>
+</div>
+
+<div class="lists row">
+	<div class="to-buy-list col s6">
+		<h4>To Buy:</h4>
+		<ol>
+			<li *ngFor="let item of itemsToBuy; let i=index">
+				{{item.quantity}} of {{item.name}}
+				<button class="btn" (click)="buy(i);">Buy</button>
+			</li>
+		</ol>
+	</div>
+
+	<div class="already-bought-list col s6">
+		<h4>Already bought:</h4>
+		<ul>
+			<li *ngFor="let item of itemsAlreadyBought">
+				Bought {{item.quantity}} {{item.name}}
+			</li>
+		</ul>
+
+		<span *ngIf="itemsAlreadyBought.length <= 0">Nothing bought yet</span>
+	</div>
+</div>
